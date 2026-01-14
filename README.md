@@ -1,2 +1,0 @@
-# GBEMU
-Gameboy emulator repository
