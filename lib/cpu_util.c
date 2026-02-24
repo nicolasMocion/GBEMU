@@ -1,8 +1,9 @@
 //
 // Created by Nicolas on 14/01/26.
 //
-
 #include <cpu.h>
+
+extern cpu_context ctx;
 
 u16 reverse(u16 n){
     return ((n & 0xFF00) >> 8) | ((n & 0xFF) << 8);
