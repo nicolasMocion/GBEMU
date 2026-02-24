@@ -1,0 +1,9 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/nicolasosorio/GBEMU/GBEMU/build/cmake_install.cmake",
+		"/Users/nicolasosorio/GBEMU/GBEMU/build/lib/cmake_install.cmake",
+		"/Users/nicolasosorio/GBEMU/GBEMU/build/gbemu/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
