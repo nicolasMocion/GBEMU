@@ -1,7 +1,7 @@
 #pragma once
 
-#include <common.h>
-#include <instructions.h>
+#include "common.h"
+#include "instructions.h"
 
 typedef struct {
 
@@ -30,5 +30,6 @@ typedef struct{
     bool stepping; //Stepping mode check
 }cpu_context;
 
+uint16_t cpu_read_reg(reg_type rt);
 void cpu_init();
 bool cpu_step();

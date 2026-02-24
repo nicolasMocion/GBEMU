@@ -1,0 +1,8 @@
+/Users/nicolasosorio/GBEMU/GBEMU/build/CMakeFiles/edit_cache.dir
+/Users/nicolasosorio/GBEMU/GBEMU/build/CMakeFiles/rebuild_cache.dir
+/Users/nicolasosorio/GBEMU/GBEMU/build/lib/CMakeFiles/emu.dir
+/Users/nicolasosorio/GBEMU/GBEMU/build/lib/CMakeFiles/edit_cache.dir
+/Users/nicolasosorio/GBEMU/GBEMU/build/lib/CMakeFiles/rebuild_cache.dir
+/Users/nicolasosorio/GBEMU/GBEMU/build/gbemu/CMakeFiles/gbemu.dir
+/Users/nicolasosorio/GBEMU/GBEMU/build/gbemu/CMakeFiles/edit_cache.dir
+/Users/nicolasosorio/GBEMU/GBEMU/build/gbemu/CMakeFiles/rebuild_cache.dir

@@ -4,10 +4,7 @@
 
 #ifndef GBEMU_INSTRUCTIONS_H
 #define GBEMU_INSTRUCTIONS_H
-
-
-
-#include <common.h>
+#include "common.h"
 
 typedef enum {
     AM_IMP,
