@@ -11,4 +11,4 @@ add_library(emu STATIC
 
 # Aquí le decimos que use los headers, pero que NO busque un archivo binario llamado gbemu_headers
 target_link_libraries(emu PUBLIC SDL2::SDL2 SDL2_ttf::SDL2_ttf)
-target_include_directories(emu PUBLIC ../include)
+target_include_directories(emu PUBLIC ..G/include)

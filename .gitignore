@@ -1,1 +1,15 @@
+# IDEs
+.idea/
+.vscode/
+
+# Build folders
+build/
 cmake-build-debug/
+cmake-build-release/
+
+# Binaries
+gbemu/gbemu
+lib/libemu.a
+
+# OS files
+.DS_Store
