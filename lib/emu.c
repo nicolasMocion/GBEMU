@@ -32,7 +32,7 @@ int emu_run(int argc, char **argv) {
         return -1;
     }
 
-    if (!cart_load(argv[1])) {
+    if (!cart_load(argv[1])) { // If cart_load is not ...
         printf("Failed to load ROM file: %s\n", argv[1]);
         return -2;
     }

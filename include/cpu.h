@@ -19,7 +19,7 @@ typedef struct {
 
 typedef struct{
     cpu_registers regs;
-    //Currect fetch
+    //Current fetch
     u16 fetched_data; // Data fetched when grabbing a register
     u16 mem_dest; //Memory destination
     bool dest_is_mem;

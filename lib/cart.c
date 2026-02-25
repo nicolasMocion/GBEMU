@@ -130,27 +130,27 @@ const char *cart_type_name() {
 }
 
 bool cart_load(char *cart) {
-    snprintf(ctx.filename, sizeof(ctx.filename), "%s", cart);
+    snprintf(ctx.filename, sizeof(ctx.filename), "%s", cart); // Copia de manera segura el nombre del archivo a la struct de cartridge context
 
-    FILE *fp = fopen(cart, "r");
+    FILE *fp = fopen(cart, "r"); // Abrimos el archivo en modo binario
 
-    if (!fp) {
+    if (!fp) { // Manejo de errores en caso de que el rom no este
         printf("Failed to open: %s\n", cart);
         return false;
     }
 
-    printf("Opened: %s\n", ctx.filename);
+    printf("Opened: %s\n", ctx.filename); //Imprime que archivo abrio (la ruta)
 
     fseek(fp, 0, SEEK_END);
-    ctx.rom_size = ftell(fp);
+    ctx.rom_size = ftell(fp); // De aca saca el tamanio del archivo
 
-    rewind(fp);
+    rewind(fp); //Regresa al inicio del archivo
 
     ctx.rom_data = malloc(ctx.rom_size);
     fread(ctx.rom_data, ctx.rom_size, 1, fp);
-    fclose(fp);
+    fclose(fp); // Copia el archivo en la RAM
 
-    ctx.header = (rom_header *)(ctx.rom_data + 0x100);
+    ctx.header = (rom_header *)(ctx.rom_data + 0x100);  // Se le el encabezado del ROM. (La informacion en los juegos de gamebpy estan en la posicion 0x100 en adelante)
     ctx.header->title[15] = 0;
 
     printf("Cartridge Loaded:\n");
@@ -160,6 +160,8 @@ bool cart_load(char *cart) {
     printf("\t RAM Size : %2.2X\n", ctx.header->ram_size);
     printf("\t LIC Code : %2.2X (%s)\n", ctx.header->lic_code, cart_lic_name());
     printf("\t ROM Vers : %2.2X\n", ctx.header->version);
+
+    //Revisando la checkSum (https://gbdev.io/pandocs/The_Cartridge_Header.html  Fuente del algorthmo de checksum de Nintendo)
 
     u16 x = 0;
     for (u16 i=0x0134; i<=0x014C; i++) {
