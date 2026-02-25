@@ -1,10 +1,12 @@
 #include <cart.h>
 
+
+// Información del cartucho a cargar
 typedef struct {
     char filename[1024];
     u32 rom_size;
     u8 *rom_data;
-    rom_header *header;
+    rom_header *header; //Encabezado
 } cart_context;
 
 static cart_context ctx;
