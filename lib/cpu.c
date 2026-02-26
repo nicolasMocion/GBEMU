@@ -59,6 +59,7 @@ static void fetch_data(){
 }
 
 static void execute(){
+    printf("Executing Instruction!: %02X  PC: %04X\n", ctx.cur_opcode, ctx.regs.pc);
     printf("Not executing yet....\n");
 }
 
@@ -71,5 +72,5 @@ bool cpu_step() {
         execute();
     }
 
-    return false;
+    return true;
 }
