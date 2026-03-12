@@ -5,24 +5,22 @@
 cpu_context ctx = {0};
 
 void cpu_init() {
-
+    ctx.regs.pc = 0x100;
 }
 
 static void fetch_instruction(){
     ctx.cur_opcode = bus_read(ctx.regs.pc++);
     ctx.cur_inst = instruction_by_opcode(ctx.cur_opcode);
 
-    if (ctx.cur_inst == NULL){
-        printf("Unknown Instruction! %02X\n", ctx.cur_opcode);
-        exit(-7);
-
-    }
 }
 
 static void fetch_data(){
     ctx.mem_dest = 0;
     ctx.dest_is_mem = false;
 
+    if (ctx.cur_inst == NULL) {
+        return;
+    }
     switch (ctx.cur_inst->mode) {
 
         case AM_IMP: return; //Imply means that anything needs to be read
@@ -59,16 +57,33 @@ static void fetch_data(){
 }
 
 static void execute(){
-    printf("Executing Instruction!: %02X  PC: %04X\n", ctx.cur_opcode, ctx.regs.pc);
-    printf("Not executing yet....\n");
+    IN_PROC proc = inst_get_processor(ctx.cur_inst->type);
+
+    if (!proc) {
+        NO_IMPL
+    }
+
+    proc(&ctx);
 }
 
 bool cpu_step() {
 
     if(!ctx.halted){
-
+        u16 pc = ctx.regs.pc;
         fetch_instruction();
         fetch_data();
+
+    printf("%04X: %-7s (%02X %02X %02X) A: %02X B: %O2X C: %02X",
+        pc, inst_name(ctx.cur_inst->type), ctx.cur_opcode, bus_read(pc +1), bus_read(pc + 2), ctx.regs.a,ctx.regs.b, ctx.regs.c);
+
+        printf("Executing Instructon: %02X PC:%04X\n", ctx.cur_opcode, pc);
+
+        if (ctx.cur_inst == NULL){
+            printf("Unknown Instruction! %02X\n", ctx.cur_opcode);
+            exit(-7);
+
+        }
+
         execute();
     }
 

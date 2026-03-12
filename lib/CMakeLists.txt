@@ -7,6 +7,7 @@ add_library(emu STATIC
         instructions.c
         ppu.c
         timer.c
+        cpu_proc.c
 )
 
 # Aquí le decimos que use los headers, pero que NO busque un archivo binario llamado gbemu_headers
