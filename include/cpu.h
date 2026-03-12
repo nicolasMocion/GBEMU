@@ -15,6 +15,7 @@ typedef struct {
     u8 l;
     u16 pc;
     u16 sp;
+
 } cpu_registers;
 
 typedef struct{
@@ -28,7 +29,10 @@ typedef struct{
 
     bool halted;
     bool stepping; //Stepping mode check
-}cpu_context;
+
+    bool int_master_enabled; // Master interrupt
+
+} cpu_context;
 
 uint16_t cpu_read_reg(reg_type rt);
 void cpu_init();
