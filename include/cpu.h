@@ -23,7 +23,7 @@ typedef struct{
     //Current fetch
     u16 fetched_data; // Data fetched when grabbing a register
     u16 mem_dest; //Memory destination
-    bool dest_is_mem;
+    bool dest_is_mem; // To check if the contents are heading to an actual memory destination and not a register
     u8 cur_opcode; // Current instruction
     instruction *cur_inst;
 
@@ -35,6 +35,8 @@ typedef struct{
 } cpu_context;
 
 uint16_t cpu_read_reg(reg_type rt);
+void cpu_set_reg(reg_type rt, u16 val);
+
 void cpu_init();
 bool cpu_step();
 
