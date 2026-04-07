@@ -34,8 +34,25 @@ void fetch_data(){
             ctx.regs.pc++;
             return;
 
-        case AM_R_D16:
+        case AM_R_D16: {
+
+            u16 lo = bus_read(ctx.regs.pc);
+            emu_cycles(1);
+
+            u16 hi = bus_read(ctx.regs.pc + 1);
+            emu_cycles(1);
+
+            ctx.fetched_data = lo | (hi << 8);
+
+            ctx.regs.pc += 2;
+
+            return;
+
+
+        }
         case AM_D16: {
+
+
             u16 lo = bus_read(ctx.regs.pc);
             emu_cycles(1);
 
