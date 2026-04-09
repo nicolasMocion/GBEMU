@@ -44,7 +44,7 @@ bool cpu_step() {
                ctx.regs.d, ctx.regs.e, ctx.regs.h, ctx.regs.l);
 
 
-        printf("Executing Instructon: %02X PC:%04X\n", ctx.cur_opcode, pc);
+        //printf("Executing Instructon: %02X PC:%04X\n", ctx.cur_opcode, pc);
 
         if (ctx.cur_inst == NULL){
             printf("Unknown Instruction! %02X\n", ctx.cur_opcode);
@@ -57,3 +57,14 @@ bool cpu_step() {
 
     return true;
 }
+
+u8 cpu_get_ie_register(){
+    return ctx.ie_register;
+}
+
+void cpu_set_ie_register(u8 n) {
+    ctx.ie_register = n;
+}
+
+
+

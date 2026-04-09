@@ -31,6 +31,7 @@ typedef struct{
     bool stepping; //Stepping mode check
 
     bool int_master_enabled; // Master interrupt
+    u8 ie_register;
 
 } cpu_context;
 
@@ -49,4 +50,5 @@ IN_PROC inst_get_processor(in_type type);
 #define CPU_FLAG_H BIT(ctx->regs.f, 5)
 #define CPU_FLAG_C BIT(ctx->regs.f, 4)
 
-
+u8 cpu_get_ie_register();
+void cpu_set_ie_register(u8 n);
