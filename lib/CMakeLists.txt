@@ -10,6 +10,8 @@ add_library(emu STATIC
         cpu_proc.c
         cpu.fetch.c
         ram.c
+        stack.cpp
+        ../include/stack.h
 
 )
 
